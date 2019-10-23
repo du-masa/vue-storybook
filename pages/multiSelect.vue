@@ -1,0 +1,168 @@
+<template>
+  <div class="container">
+    <MultiSelect
+      :parentData="parentData"
+      :fetchChildrenData="fetchChildrenData"
+      :childrenData="selectedChildren"
+    />
+  </div>
+</template>
+
+<script>
+import MultiSelect from '@/components/MultiSelect.vue'
+
+import { mapState } from 'vuex';
+export default {
+  components: {
+    MultiSelect
+  },
+  data() {
+    return {
+      selectedParentId: 1,
+      parentData: [
+      {
+        name: "親セレクト1",
+        id: 1
+      },
+      {
+        name: "親セレクト2",
+        id: 2
+      },
+      {
+        name: "親セレクト3",
+        id: 3
+      },
+      {
+        name: "親セレクト4",
+        id: 4
+      }
+    ],
+    childrenData: [
+      {
+        parentId: 1,
+        children: [
+          {
+            name: "子セレクト1",
+            id: 1,
+            text: "子セレクト1のテキストです"
+          },
+          {
+            name: "子セレクト2",
+            id: 2,
+            text: "子セレクト2のテキストです"
+          },
+          {
+            name: "子セレクト3",
+            id: 3,
+            text: "子セレクト3のテキストです"
+          },
+          {
+            name: "子セレクト4",
+            id: 4,
+            text: "子セレクト4のテキストです"
+          }
+        ]
+      },
+      {
+        parentId: 2,
+        children: [
+          {
+            name: "子セレクト5",
+            id: 5,
+            text: "子セレクト5のテキストです"
+          },
+          {
+            name: "子セレクト6",
+            id: 6,
+            text: "子セレクト6のテキストです"
+          },
+          {
+            name: "子セレクト7",
+            id: 7,
+            text: "子セレクト7のテキストです"
+          },
+          {
+            name: "子セレクト8",
+            id: 8,
+            text: "子セレクト8のテキストです"
+          }
+        ]
+      },
+      {
+        parentId: 3,
+        children: [
+          {
+            name: "子セレクト9",
+            id: 9,
+            text: "子セレクト9のテキストです"
+          },
+          {
+            name: "子セレクト10",
+            id: 10,
+            text: "子セレクト10のテキストです"
+          },
+          {
+            name: "子セレクト11",
+            id: 11,
+            text: "子セレクト11のテキストです"
+          },
+          {
+            name: "子セレクト12",
+            id: 12,
+            text: "子セレクト12のテキストです"
+          }
+        ]
+      },
+      {
+        parentId: 4,
+        children: [
+          {
+            name: "子セレクト13",
+            id: 13,
+            text: "子セレクト13のテキストです"
+          },
+          {
+            name: "子セレクト14",
+            id: 14,
+            text: "子セレクト14のテキストです"
+          },
+          {
+            name: "子セレクト15",
+            id: 15,
+            text: "子セレクト15のテキストです"
+          },
+          {
+            name: "子セレクト16",
+            id: 16,
+            text: "子セレクト16のテキストです"
+          }
+        ]
+      }
+    ]
+    }
+  },
+  computed: {
+    selectedChildren() {
+      const selectedChildren = this.childrenData.find(children => children.parentId === this.selectedParentId);
+      return selectedChildren ? selectedChildren.children : [];
+    },
+  },
+  methods: {
+    fetchChildrenData({ selectedParentId }) {
+      this.selectedParentId = selectedParentId;
+    }
+  }
+}
+</script>
+
+<style>
+.container {
+  margin: 0 auto;
+  min-height: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+</style>
