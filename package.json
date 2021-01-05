@@ -14,7 +14,7 @@
     "jsonServer": "json-server --watch db.json --port 3004 --delay 1500"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "json-server": "^0.15.1",
     "nuxt": "^2.0.0"
   },
